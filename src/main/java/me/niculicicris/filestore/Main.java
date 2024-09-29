@@ -1,10 +1,10 @@
 package me.niculicicris.filestore;
 
 import me.niculicicris.filestore.application.builder.ApplicationBuilder;
-import me.niculicicris.filestore.injection.ApplicationInjection;
-import me.niculicicris.filestore.injection.RepositoryInjection;
-import me.niculicicris.filestore.injection.ServiceInjection;
-import me.niculicicris.filestore.injection.ValidationInjection;
+import me.niculicicris.filestore.injection.extension.ApplicationInjection;
+import me.niculicicris.filestore.injection.extension.RepositoryInjection;
+import me.niculicicris.filestore.injection.extension.ServiceInjection;
+import me.niculicicris.filestore.injection.extension.ValidationInjection;
 
 public class Main {
 

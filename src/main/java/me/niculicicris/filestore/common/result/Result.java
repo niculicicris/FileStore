@@ -1,10 +1,11 @@
 package me.niculicicris.filestore.common.result;
 
 import me.niculicicris.filestore.common.error.Error;
+import me.niculicicris.filestore.common.result.abstraction.IResult;
 
-import java.util.function.Function;
+import java.util.function.Consumer;
 
-public class Result<T> {
+public class Result<T> implements IResult<T> {
     private final T value;
     private final Error error;
     private final boolean success;
@@ -15,31 +16,36 @@ public class Result<T> {
         this.success = success;
     }
 
-    public static <T> Result<T> success(T value) {
+    public static <T> IResult<T> success(T value) {
         return new Result<>(value, null, true);
     }
 
-    public static <T> Result<T> failure(Error error) {
+    public static <T> IResult<T> failure(Error error) {
         return new Result<>(null, error, false);
     }
 
-    public <R> R match(Function<T, R> onSuccess, Function<Error, R> onFailure) {
-        if (success) return onSuccess.apply(value);
-        else return onFailure.apply(error);
+    @Override
+    public void match(Consumer<T> onSuccess, Consumer<Error> onFailure) {
+        if (success) onSuccess.accept(value);
+        else onFailure.accept(error);
     }
 
+    @Override
     public T getValue() {
         return value;
     }
 
+    @Override
     public Error getError() {
         return error;
     }
 
+    @Override
     public boolean isSuccess() {
         return success;
     }
 
+    @Override
     public boolean isFailure() {
         return !success;
     }
