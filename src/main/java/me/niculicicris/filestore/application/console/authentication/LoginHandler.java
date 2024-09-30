@@ -1,23 +1,28 @@
 package me.niculicicris.filestore.application.console.authentication;
 
 import me.niculicicris.filestore.application.console.abstraction.IErrorHandler;
-import me.niculicicris.filestore.application.console.abstraction.OptionHandler;
+import me.niculicicris.filestore.application.console.abstraction.IOptionHandler;
 import me.niculicicris.filestore.application.console.input.abstraction.ICredentialsReader;
 import me.niculicicris.filestore.common.annotation.Inject;
 import me.niculicicris.filestore.service.abstraction.IAuthenticationService;
 
-public class LoginHandler extends OptionHandler {
+public class LoginHandler implements IOptionHandler {
     private final IErrorHandler errorHandler;
     private final ICredentialsReader credentialsReader;
     private final IAuthenticationService authenticationService;
 
     @Inject
     public LoginHandler(IErrorHandler errorHandler,
-                        ICredentialsReader credentialsReader, IAuthenticationService authenticationService) {
-        super("Login");
+                        ICredentialsReader credentialsReader,
+                        IAuthenticationService authenticationService) {
         this.errorHandler = errorHandler;
         this.credentialsReader = credentialsReader;
         this.authenticationService = authenticationService;
+    }
+
+    @Override
+    public String getTitle() {
+        return "Login";
     }
 
     @Override

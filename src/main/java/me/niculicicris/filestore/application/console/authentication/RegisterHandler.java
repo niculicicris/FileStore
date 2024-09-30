@@ -1,12 +1,12 @@
 package me.niculicicris.filestore.application.console.authentication;
 
 import me.niculicicris.filestore.application.console.abstraction.IErrorHandler;
-import me.niculicicris.filestore.application.console.abstraction.OptionHandler;
+import me.niculicicris.filestore.application.console.abstraction.IOptionHandler;
 import me.niculicicris.filestore.application.console.input.abstraction.ICredentialsReader;
 import me.niculicicris.filestore.common.annotation.Inject;
 import me.niculicicris.filestore.service.abstraction.IUserService;
 
-public class RegisterHandler extends OptionHandler {
+public class RegisterHandler implements IOptionHandler {
     private final IErrorHandler errorHandler;
     private final ICredentialsReader credentialsReader;
     private final IUserService userService;
@@ -14,10 +14,14 @@ public class RegisterHandler extends OptionHandler {
     @Inject
     public RegisterHandler(IErrorHandler errorHandler,
                            ICredentialsReader credentialsReader, IUserService userService) {
-        super("Register");
         this.errorHandler = errorHandler;
         this.credentialsReader = credentialsReader;
         this.userService = userService;
+    }
+
+    @Override
+    public String getTitle() {
+        return "Register";
     }
 
     @Override

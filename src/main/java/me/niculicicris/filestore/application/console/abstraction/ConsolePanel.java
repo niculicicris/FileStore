@@ -9,7 +9,7 @@ public abstract class ConsolePanel implements IConsolePanel {
     private final String title;
     protected final IErrorHandler errorHandler;
     private final IOptionReader optionReader;
-    private final List<OptionHandler> handlers = new ArrayList<>();
+    private final List<IOptionHandler> handlers = new ArrayList<>();
     private boolean shouldStop;
 
     public ConsolePanel(String title,
@@ -29,7 +29,7 @@ public abstract class ConsolePanel implements IConsolePanel {
         }
     }
 
-    protected void addHandler(OptionHandler handler) {
+    protected void addHandler(IOptionHandler handler) {
         handlers.add(handler);
     }
 
@@ -41,7 +41,7 @@ public abstract class ConsolePanel implements IConsolePanel {
         System.out.println(title + ":");
 
         for (int index = 0; index < handlers.size(); index++) {
-            OptionHandler option = handlers.get(index);
+            IOptionHandler option = handlers.get(index);
             displayOption(index + 1, option.getTitle());
         }
 
