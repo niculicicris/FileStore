@@ -1,7 +1,7 @@
 package me.niculicicris.filestore.application.input;
 
-import me.niculicicris.filestore.application.console.input.CredentialsReader;
-import me.niculicicris.filestore.application.console.input.abstraction.IStringReader;
+import me.niculicicris.filestore.application.console.io.input.CredentialsReader;
+import me.niculicicris.filestore.application.console.io.input.abstraction.IStringReader;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.InjectMocks;

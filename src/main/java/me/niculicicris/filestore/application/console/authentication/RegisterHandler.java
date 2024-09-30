@@ -2,9 +2,9 @@ package me.niculicicris.filestore.application.console.authentication;
 
 import me.niculicicris.filestore.application.console.abstraction.IErrorHandler;
 import me.niculicicris.filestore.application.console.abstraction.IOptionHandler;
-import me.niculicicris.filestore.application.console.input.abstraction.ICredentialsReader;
+import me.niculicicris.filestore.application.console.io.input.abstraction.ICredentialsReader;
 import me.niculicicris.filestore.common.annotation.Inject;
-import me.niculicicris.filestore.service.abstraction.IUserService;
+import me.niculicicris.filestore.service.authentication.abstraction.IUserService;
 
 public class RegisterHandler implements IOptionHandler {
     private final IErrorHandler errorHandler;

@@ -1,4 +1,4 @@
-package me.niculicicris.filestore.service;
+package me.niculicicris.filestore.service.authentication;
 
 import me.niculicicris.filestore.common.annotation.Inject;
 import me.niculicicris.filestore.common.error.UserError;
@@ -7,8 +7,8 @@ import me.niculicicris.filestore.common.result.abstraction.IEmptyResult;
 import me.niculicicris.filestore.data.dto.UserCredentialsDto;
 import me.niculicicris.filestore.data.model.User;
 import me.niculicicris.filestore.repository.abstraction.IUserRepository;
-import me.niculicicris.filestore.service.abstraction.IHashService;
-import me.niculicicris.filestore.service.abstraction.IUserService;
+import me.niculicicris.filestore.service.authentication.abstraction.IHashService;
+import me.niculicicris.filestore.service.authentication.abstraction.IUserService;
 import me.niculicicris.filestore.validation.abstraction.ICredentialsValidator;
 
 public class UserService implements IUserService {

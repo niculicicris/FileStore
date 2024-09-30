@@ -1,6 +1,6 @@
-package me.niculicicris.filestore.application.console.input;
+package me.niculicicris.filestore.application.console.io.input;
 
-import me.niculicicris.filestore.application.console.input.abstraction.IOptionReader;
+import me.niculicicris.filestore.application.console.io.input.abstraction.IOptionReader;
 import me.niculicicris.filestore.common.annotation.Inject;
 
 import java.util.Scanner;

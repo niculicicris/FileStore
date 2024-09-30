@@ -1,4 +1,4 @@
-package me.niculicicris.filestore.service.abstraction;
+package me.niculicicris.filestore.service.authentication.abstraction;
 
 public interface IHashService {
     String hash(String value);

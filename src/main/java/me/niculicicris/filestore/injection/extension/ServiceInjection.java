@@ -1,12 +1,14 @@
 package me.niculicicris.filestore.injection.extension;
 
 import me.niculicicris.filestore.application.builder.ApplicationBuilder;
-import me.niculicicris.filestore.service.AuthenticationService;
-import me.niculicicris.filestore.service.NoneHashService;
-import me.niculicicris.filestore.service.UserService;
-import me.niculicicris.filestore.service.abstraction.IAuthenticationService;
-import me.niculicicris.filestore.service.abstraction.IHashService;
-import me.niculicicris.filestore.service.abstraction.IUserService;
+import me.niculicicris.filestore.service.authentication.AuthenticationService;
+import me.niculicicris.filestore.service.authentication.NoneHashService;
+import me.niculicicris.filestore.service.authentication.UserService;
+import me.niculicicris.filestore.service.authentication.abstraction.IAuthenticationService;
+import me.niculicicris.filestore.service.authentication.abstraction.IHashService;
+import me.niculicicris.filestore.service.authentication.abstraction.IUserService;
+import me.niculicicris.filestore.service.file.FileService;
+import me.niculicicris.filestore.service.file.abstraction.IFileService;
 
 public class ServiceInjection {
 
@@ -17,5 +19,6 @@ public class ServiceInjection {
         builder.addComponent(IUserService.class, UserService.class);
         builder.addComponent(IAuthenticationService.class, AuthenticationService.class);
         builder.addComponent(IHashService.class, NoneHashService.class);
+        builder.addComponent(IFileService.class, FileService.class);
     }
 }

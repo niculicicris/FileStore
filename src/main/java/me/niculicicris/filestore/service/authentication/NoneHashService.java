@@ -1,6 +1,6 @@
-package me.niculicicris.filestore.service;
+package me.niculicicris.filestore.service.authentication;
 
-import me.niculicicris.filestore.service.abstraction.IHashService;
+import me.niculicicris.filestore.service.authentication.abstraction.IHashService;
 
 public class NoneHashService implements IHashService {
 

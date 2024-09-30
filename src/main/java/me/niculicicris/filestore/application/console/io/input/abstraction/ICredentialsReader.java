@@ -1,4 +1,4 @@
-package me.niculicicris.filestore.application.console.input.abstraction;
+package me.niculicicris.filestore.application.console.io.input.abstraction;
 
 import me.niculicicris.filestore.data.dto.UserCredentialsDto;
 

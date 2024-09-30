@@ -1,6 +1,6 @@
 package me.niculicicris.filestore.application.console.abstraction;
 
-import me.niculicicris.filestore.application.console.input.abstraction.IOptionReader;
+import me.niculicicris.filestore.application.console.io.input.abstraction.IOptionReader;
 
 import java.util.ArrayList;
 import java.util.List;

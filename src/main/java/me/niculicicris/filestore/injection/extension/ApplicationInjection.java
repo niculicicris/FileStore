@@ -7,19 +7,19 @@ import me.niculicicris.filestore.application.console.abstraction.IOptionHandler;
 import me.niculicicris.filestore.application.console.authentication.AuthenticationPanel;
 import me.niculicicris.filestore.application.console.authentication.LoginHandler;
 import me.niculicicris.filestore.application.console.authentication.RegisterHandler;
-import me.niculicicris.filestore.application.console.error.ErrorHandler;
 import me.niculicicris.filestore.application.console.file.FilePanel;
 import me.niculicicris.filestore.application.console.file.RetrieveFileHandler;
 import me.niculicicris.filestore.application.console.file.StoreFileHandler;
 import me.niculicicris.filestore.application.console.file.ViewFilesHandler;
-import me.niculicicris.filestore.application.console.input.CredentialsReader;
-import me.niculicicris.filestore.application.console.input.FileReader;
-import me.niculicicris.filestore.application.console.input.OptionReader;
-import me.niculicicris.filestore.application.console.input.StringReader;
-import me.niculicicris.filestore.application.console.input.abstraction.ICredentialsReader;
-import me.niculicicris.filestore.application.console.input.abstraction.IFileReader;
-import me.niculicicris.filestore.application.console.input.abstraction.IOptionReader;
-import me.niculicicris.filestore.application.console.input.abstraction.IStringReader;
+import me.niculicicris.filestore.application.console.io.error.ErrorHandler;
+import me.niculicicris.filestore.application.console.io.input.CredentialsReader;
+import me.niculicicris.filestore.application.console.io.input.FileReader;
+import me.niculicicris.filestore.application.console.io.input.OptionReader;
+import me.niculicicris.filestore.application.console.io.input.StringReader;
+import me.niculicicris.filestore.application.console.io.input.abstraction.ICredentialsReader;
+import me.niculicicris.filestore.application.console.io.input.abstraction.IFileReader;
+import me.niculicicris.filestore.application.console.io.input.abstraction.IOptionReader;
+import me.niculicicris.filestore.application.console.io.input.abstraction.IStringReader;
 
 import java.util.Scanner;
 

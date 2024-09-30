@@ -1,6 +1,6 @@
 package me.niculicicris.filestore.application.input;
 
-import me.niculicicris.filestore.application.console.input.StringReader;
+import me.niculicicris.filestore.application.console.io.input.StringReader;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.InjectMocks;

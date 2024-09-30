@@ -1,4 +1,4 @@
-package me.niculicicris.filestore.application.console.error;
+package me.niculicicris.filestore.application.console.io.error;
 
 import me.niculicicris.filestore.application.console.abstraction.IErrorHandler;
 import me.niculicicris.filestore.common.error.Error;
@@ -16,6 +16,7 @@ public class ErrorHandler implements IErrorHandler {
 
     private void addCommonErrors() {
         errors.put("Server", "An internal server error has occurred.");
+        errors.put("File", "The file was not found or can't be read.");
     }
 
     private void addUserErrors() {

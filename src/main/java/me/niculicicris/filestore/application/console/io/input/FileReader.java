@@ -1,8 +1,9 @@
-package me.niculicicris.filestore.application.console.input;
+package me.niculicicris.filestore.application.console.io.input;
 
-import me.niculicicris.filestore.application.console.input.abstraction.IFileReader;
-import me.niculicicris.filestore.application.console.input.abstraction.IStringReader;
+import me.niculicicris.filestore.application.console.io.input.abstraction.IFileReader;
+import me.niculicicris.filestore.application.console.io.input.abstraction.IStringReader;
 import me.niculicicris.filestore.common.annotation.Inject;
+import me.niculicicris.filestore.data.dto.FileDto;
 
 import java.io.File;
 import java.io.FileInputStream;
@@ -18,9 +19,14 @@ public class FileReader implements IFileReader {
     }
 
     @Override
-    public Optional<byte[]> readFile() {
+    public Optional<FileDto> readFile() {
         var fileName = stringReader.readString("Enter file name: ");
-        return Optional.ofNullable(getFile(fileName));
+        var fileContent = getFile(fileName);
+
+        if (fileContent == null) return Optional.empty();
+        var file = new FileDto(fileName, fileContent);
+
+        return Optional.of(file);
     }
 
     private byte[] getFile(String fileName) {
