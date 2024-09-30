@@ -28,17 +28,15 @@ public class CredentialsValidator implements ICredentialsValidator {
 
     private boolean isUsernameValid(String username) {
         if (username == null) return false;
-        if (username.isEmpty()) return false;
-        if (username.length() < 3) return false;
+        var regex = "[a-zA-Z]\\w{3,23}";
 
-
-        return username.length() <= 32;
+        return username.matches(regex);
     }
 
     private boolean isPasswordValid(String password) {
         if (password == null) return false;
-        if (password.isEmpty()) return false;
+        var regex = "\\w{6,24}";
 
-        return password.length() >= 6;
+        return password.matches(regex);
     }
 }
