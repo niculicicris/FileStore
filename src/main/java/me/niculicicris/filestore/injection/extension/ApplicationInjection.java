@@ -13,9 +13,11 @@ import me.niculicicris.filestore.application.console.file.RetrieveFileHandler;
 import me.niculicicris.filestore.application.console.file.StoreFileHandler;
 import me.niculicicris.filestore.application.console.file.ViewFilesHandler;
 import me.niculicicris.filestore.application.console.input.CredentialsReader;
+import me.niculicicris.filestore.application.console.input.FileReader;
 import me.niculicicris.filestore.application.console.input.OptionReader;
 import me.niculicicris.filestore.application.console.input.StringReader;
 import me.niculicicris.filestore.application.console.input.abstraction.ICredentialsReader;
+import me.niculicicris.filestore.application.console.input.abstraction.IFileReader;
 import me.niculicicris.filestore.application.console.input.abstraction.IOptionReader;
 import me.niculicicris.filestore.application.console.input.abstraction.IStringReader;
 
@@ -55,5 +57,6 @@ public class ApplicationInjection {
         builder.addComponent(IOptionReader.class, OptionReader.class);
         builder.addComponent(IStringReader.class, StringReader.class);
         builder.addComponent(ICredentialsReader.class, CredentialsReader.class);
+        builder.addComponent(IFileReader.class, FileReader.class);
     }
 }
