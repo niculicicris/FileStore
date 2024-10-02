@@ -106,7 +106,7 @@ public class FileServiceTest {
     @Test
     public void retrieveFile_invalidFileName_shouldReturnValidationError() {
         var validationError = new Error("Test", ErrorType.VALIDATION, "TestTarget");
-        var name = "Test";
+        var name = "Test*";
 
         when(validatorMock.validate(name)).thenReturn(EmptyResult.failure(validationError));
         var result = fileService.retrieveFile(name);
@@ -145,7 +145,7 @@ public class FileServiceTest {
     }
 
     @Test
-    public void retrieveFile_fileNotFound_shouldReturnRetrievedFile() {
+    public void retrieveFile_shouldReturnRetrievedFile() {
         var name = "Test.txt";
         var owner = "TestOwner";
         var file = new StoredFile(owner, name, new byte[0]);
@@ -158,5 +158,60 @@ public class FileServiceTest {
 
         assertTrue(result.isSuccess());
         assertEquals(name, result.getValue().name());
+    }
+
+    @Test
+    public void deleteFile_invalidFileName_shouldReturnValidationError() {
+        var validationError = new Error("Test", ErrorType.VALIDATION, "TestTarget");
+        var name = "Test*";
+
+        when(validatorMock.validate(name)).thenReturn(EmptyResult.failure(validationError));
+        var result = fileService.deleteFile(name);
+
+        assertTrue(result.isFailure());
+        assertEquals(ErrorType.VALIDATION, result.getError().type());
+    }
+
+    @Test
+    public void deleteFile_notAuthenticated_shouldReturnAuthorizationError() {
+        var name = "Test.txt";
+
+        when(validatorMock.validate(name)).thenReturn(EmptyResult.success());
+        when(authenticationRepositoryMock.getAuthentication()).thenReturn(Optional.empty());
+
+        var result = fileService.deleteFile(name);
+
+        assertTrue(result.isFailure());
+        assertEquals(ErrorType.AUTHORIZATION, result.getError().type());
+    }
+
+    @Test
+    public void deleteFile_fileNotFound_shouldReturnNotFoundError() {
+        var name = "Test.txt";
+        var owner = "TestOwner";
+
+        when(validatorMock.validate(name)).thenReturn(EmptyResult.success());
+        when(authenticationRepositoryMock.getAuthentication()).thenReturn(Optional.of(owner));
+        when(fileRepositoryMock.fileExists(owner, name)).thenReturn(false);
+
+        var result = fileService.deleteFile(name);
+
+        assertTrue(result.isFailure());
+        assertEquals(ErrorType.NOT_FOUND, result.getError().type());
+    }
+
+    @Test
+    public void deleteFile__shouldDeleteFile() {
+        var name = "Test.txt";
+        var owner = "TestOwner";
+
+        when(validatorMock.validate(name)).thenReturn(EmptyResult.success());
+        when(authenticationRepositoryMock.getAuthentication()).thenReturn(Optional.of(owner));
+        when(fileRepositoryMock.fileExists(owner, name)).thenReturn(true);
+
+        var result = fileService.deleteFile(name);
+
+        assertTrue(result.isSuccess());
+        verify(fileRepositoryMock, times(1)).deleteFile(owner, name);
     }
 }

@@ -13,4 +13,6 @@ public interface IFileService {
     IResult<List<FileDetailDto>> getFilesDetails();
 
     IResult<FileDto> retrieveFile(String name);
+
+    IEmptyResult deleteFile(String name);
 }

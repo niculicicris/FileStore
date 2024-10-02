@@ -94,4 +94,26 @@ public class FileService implements IFileService {
 
         return Result.success(new FileDto(storedFile.name(), storedFile.content()));
     }
+
+    @Override
+    public IEmptyResult deleteFile(String name) {
+        var validationResult = validator.validate(name);
+        if (validationResult.isFailure()) return validationResult;
+
+        var user = authenticationRepository.getAuthentication();
+
+        if (user.isEmpty()) {
+            var error = UserError.failedAuthorization();
+            return EmptyResult.failure(error);
+        }
+        var owner = user.get();
+
+        if (!fileRepository.fileExists(owner, name)) {
+            var error = FileError.notFound(name);
+            return EmptyResult.failure(error);
+        }
+        fileRepository.deleteFile(owner, name);
+
+        return EmptyResult.success();
+    }
 }

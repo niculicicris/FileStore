@@ -13,4 +13,6 @@ public interface IFileRepository {
     List<StoredFile> getFiles(String owner);
 
     Optional<StoredFile> getFile(String owner, String name);
+
+    void deleteFile(String owner, String name);
 }

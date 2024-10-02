@@ -69,4 +69,18 @@ public class MapFileRepositoryTest {
         assertEquals(owner, optionalFile.get().owner());
         assertEquals(name, optionalFile.get().name());
     }
+
+    @Test
+    public void deleteFile_shouldDeleteFile() {
+        var owner = "TestOwner";
+        var name = "Test.txt";
+        var file = new StoredFile(owner, name, new byte[0]);
+
+        repository.saveFile(file);
+        repository.deleteFile(owner, name);
+
+        var foundFile = repository.getFile(owner, name);
+
+        assertTrue(foundFile.isEmpty());
+    }
 }

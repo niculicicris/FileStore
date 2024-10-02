@@ -28,6 +28,7 @@ public class FileSaver implements IFileSaver {
 
         createFile(outputFile);
         writeFile(outputFile, file.content());
+        System.out.println("File retrieved successfully!");
     }
 
     private void createFile(File file) {

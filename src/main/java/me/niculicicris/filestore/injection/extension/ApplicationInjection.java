@@ -7,10 +7,7 @@ import me.niculicicris.filestore.application.console.abstraction.IOptionHandler;
 import me.niculicicris.filestore.application.console.authentication.AuthenticationPanel;
 import me.niculicicris.filestore.application.console.authentication.LoginHandler;
 import me.niculicicris.filestore.application.console.authentication.RegisterHandler;
-import me.niculicicris.filestore.application.console.file.FilePanel;
-import me.niculicicris.filestore.application.console.file.RetrieveFileHandler;
-import me.niculicicris.filestore.application.console.file.StoreFileHandler;
-import me.niculicicris.filestore.application.console.file.ViewFilesHandler;
+import me.niculicicris.filestore.application.console.file.*;
 import me.niculicicris.filestore.application.console.io.error.ErrorHandler;
 import me.niculicicris.filestore.application.console.io.input.CredentialsReader;
 import me.niculicicris.filestore.application.console.io.input.FileReader;
@@ -53,6 +50,7 @@ public class ApplicationInjection {
         builder.addComponent("Store", IOptionHandler.class, StoreFileHandler.class);
         builder.addComponent("View", IOptionHandler.class, ViewFilesHandler.class);
         builder.addComponent("Retrieve", IOptionHandler.class, RetrieveFileHandler.class);
+        builder.addComponent("Delete", IOptionHandler.class, DeleteFileHandler.class);
     }
 
     private static void addInput(ApplicationBuilder builder) {

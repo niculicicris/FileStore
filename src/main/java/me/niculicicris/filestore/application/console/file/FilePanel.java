@@ -14,11 +14,13 @@ public class FilePanel extends ConsolePanel {
                      IOptionReader optionReader,
                      @Named("Store") IOptionHandler storeHandler,
                      @Named("View") IOptionHandler viewHandler,
-                     @Named("Retrieve") IOptionHandler retrieveHandler) {
+                     @Named("Retrieve") IOptionHandler retrieveHandler,
+                     @Named("Delete") IOptionHandler deleteHandler) {
         super("FileStore", errorHandler, optionReader);
 
         addHandler(storeHandler);
         addHandler(viewHandler);
         addHandler(retrieveHandler);
+        addHandler(deleteHandler);
     }
 }

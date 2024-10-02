@@ -33,4 +33,14 @@ public class MapFileRepository implements IFileRepository {
         if (!storedFiles.containsKey(owner)) return Optional.empty();
         return Optional.ofNullable(storedFiles.get(owner).get(name));
     }
+
+    @Override
+    public void deleteFile(String owner, String name) {
+        if (!storedFiles.containsKey(owner)) return;
+        storedFiles.get(owner).remove(name);
+
+        if (storedFiles.get(owner).isEmpty()) {
+            storedFiles.remove(owner);
+        }
+    }
 }
