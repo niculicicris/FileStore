@@ -49,7 +49,7 @@ public class AuthenticationServiceTest {
         var result = authenticationService.loginUser(credentials);
 
         assertTrue(result.isFailure());
-        assertEquals(ErrorType.VALIDATION, result.getError().getType());
+        assertEquals(ErrorType.VALIDATION, result.getError().type());
     }
 
     @Test
@@ -63,8 +63,8 @@ public class AuthenticationServiceTest {
         var result = authenticationService.loginUser(credentials);
 
         assertTrue(result.isFailure());
-        assertEquals(ErrorType.NOT_FOUND, result.getError().getType());
-        assertEquals(username, result.getError().getTarget());
+        assertEquals(ErrorType.NOT_FOUND, result.getError().type());
+        assertEquals(username, result.getError().target());
     }
 
     @Test
@@ -83,7 +83,7 @@ public class AuthenticationServiceTest {
         var result = authenticationService.loginUser(credentials);
 
         assertTrue(result.isFailure());
-        assertEquals(ErrorType.AUTHENTICATION, result.getError().getType());
+        assertEquals(ErrorType.AUTHENTICATION, result.getError().type());
     }
 
     @Test

@@ -26,7 +26,7 @@ public class CredentialsValidatorTest {
         var result = validator.validate(credentials);
 
         assertTrue(result.isFailure());
-        assertEquals(ErrorType.VALIDATION, result.getError().getType());
+        assertEquals(ErrorType.VALIDATION, result.getError().type());
     }
 
     @ParameterizedTest
@@ -36,7 +36,7 @@ public class CredentialsValidatorTest {
         var result = validator.validate(credentials);
 
         assertTrue(result.isFailure());
-        assertEquals(ErrorType.VALIDATION, result.getError().getType());
+        assertEquals(ErrorType.VALIDATION, result.getError().type());
     }
 
     @Test
@@ -46,7 +46,7 @@ public class CredentialsValidatorTest {
         var result = validator.validate(credentials);
 
         assertTrue(result.isFailure());
-        assertEquals(ErrorType.VALIDATION, result.getError().getType());
+        assertEquals(ErrorType.VALIDATION, result.getError().type());
     }
 
     @Test
@@ -55,7 +55,7 @@ public class CredentialsValidatorTest {
         var result = validator.validate(credentials);
 
         assertTrue(result.isFailure());
-        assertEquals(ErrorType.VALIDATION, result.getError().getType());
+        assertEquals(ErrorType.VALIDATION, result.getError().type());
     }
 
     @ParameterizedTest
@@ -65,7 +65,7 @@ public class CredentialsValidatorTest {
         var result = validator.validate(credentials);
 
         assertTrue(result.isFailure());
-        assertEquals(ErrorType.VALIDATION, result.getError().getType());
+        assertEquals(ErrorType.VALIDATION, result.getError().type());
     }
 
     @Test
@@ -75,6 +75,6 @@ public class CredentialsValidatorTest {
         var result = validator.validate(credentials);
 
         assertTrue(result.isFailure());
-        assertEquals(ErrorType.VALIDATION, result.getError().getType());
+        assertEquals(ErrorType.VALIDATION, result.getError().type());
     }
 }

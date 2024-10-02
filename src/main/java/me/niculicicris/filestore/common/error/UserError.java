@@ -24,4 +24,8 @@ public class UserError {
     public static Error failedAuthentication(String username) {
         return new Error("User.Authentication", ErrorType.AUTHENTICATION, username);
     }
+
+    public static Error failedAuthorization() {
+        return new Error("User.Authorization", ErrorType.AUTHORIZATION, "");
+    }
 }

@@ -28,7 +28,7 @@ public class StoreFileHandler implements IOptionHandler {
         var optionalFile = fileReader.readFile();
 
         if (optionalFile.isEmpty()) {
-            errorHandler.handleError("File");
+            errorHandler.handleError("File.System.NotFound");
             return;
         }
         var file = optionalFile.get();

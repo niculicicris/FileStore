@@ -42,7 +42,7 @@ public class UserServiceTest {
         var result = userService.registerUser(credentials);
 
         assertTrue(result.isFailure());
-        assertEquals(ErrorType.VALIDATION, result.getError().getType());
+        assertEquals(ErrorType.VALIDATION, result.getError().type());
     }
 
     @Test
@@ -56,7 +56,7 @@ public class UserServiceTest {
         var result = userService.registerUser(credentials);
 
         assertTrue(result.isFailure());
-        assertEquals(ErrorType.CONFLICT, result.getError().getType());
+        assertEquals(ErrorType.CONFLICT, result.getError().type());
     }
 
     @Test

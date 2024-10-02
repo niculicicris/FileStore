@@ -20,6 +20,8 @@ import me.niculicicris.filestore.application.console.io.input.abstraction.ICrede
 import me.niculicicris.filestore.application.console.io.input.abstraction.IFileReader;
 import me.niculicicris.filestore.application.console.io.input.abstraction.IOptionReader;
 import me.niculicicris.filestore.application.console.io.input.abstraction.IStringReader;
+import me.niculicicris.filestore.application.console.io.output.FileSaver;
+import me.niculicicris.filestore.application.console.io.output.abstraction.IFileSaver;
 
 import java.util.Scanner;
 
@@ -33,6 +35,7 @@ public class ApplicationInjection {
         addAuthentication(builder);
         addFile(builder);
         addInput(builder);
+        addOutput(builder);
     }
 
     private static void addError(ApplicationBuilder builder) {
@@ -58,5 +61,9 @@ public class ApplicationInjection {
         builder.addComponent(IStringReader.class, StringReader.class);
         builder.addComponent(ICredentialsReader.class, CredentialsReader.class);
         builder.addComponent(IFileReader.class, FileReader.class);
+    }
+
+    private static void addOutput(ApplicationBuilder builder) {
+        builder.addComponent(IFileSaver.class, FileSaver.class);
     }
 }

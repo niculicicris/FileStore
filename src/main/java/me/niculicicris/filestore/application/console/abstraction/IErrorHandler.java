@@ -6,4 +6,6 @@ public interface IErrorHandler {
     void handleError(Error error);
 
     void handleError(String code);
+
+    void handleError(String code, String target);
 }

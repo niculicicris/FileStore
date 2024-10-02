@@ -40,7 +40,7 @@ public class StoreFileHandlerTest {
         });
 
         verify(fileReaderMock, times(1)).readFile();
-        verify(errorHandlerMock, times(1)).handleError("File");
+        verify(errorHandlerMock, times(1)).handleError("File.System.NotFound");
     }
 
     @Test
