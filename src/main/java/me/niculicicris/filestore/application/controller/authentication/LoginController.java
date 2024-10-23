@@ -11,7 +11,12 @@ public class LoginController {
         this.navigator = navigator;
     }
 
-    public void switchRegister() {
+
+    public void onLoginButtonClick() {
+
+    }
+
+    public void onRegisterButtonClick() {
         navigator.navigate("register");
     }
 }

@@ -5,8 +5,8 @@ import me.niculicicris.filestore.application.builder.ApplicationBuilder;
 import me.niculicicris.filestore.application.controller.ApplicationController;
 import me.niculicicris.filestore.application.controller.authentication.LoginController;
 import me.niculicicris.filestore.application.controller.authentication.RegisterController;
-import me.niculicicris.filestore.application.loader.IFxmlLoader;
-import me.niculicicris.filestore.application.loader.InjectionFXMLLoader;
+import me.niculicicris.filestore.application.loader.IViewLoader;
+import me.niculicicris.filestore.application.loader.ViewLoader;
 import me.niculicicris.filestore.application.navigation.MainNavigator;
 import me.niculicicris.filestore.application.navigation.abstraction.INavigator;
 
@@ -23,7 +23,7 @@ public class ApplicationInjection {
 
     private static void addFX(ApplicationBuilder builder, Stage stage) {
         builder.addComponent(Stage.class, stage);
-        builder.addComponent(IFxmlLoader.class, InjectionFXMLLoader.class);
+        builder.addComponent(IViewLoader.class, ViewLoader.class);
     }
 
     private static void addNavigation(ApplicationBuilder builder) {

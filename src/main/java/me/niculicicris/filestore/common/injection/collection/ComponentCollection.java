@@ -150,4 +150,9 @@ public class ComponentCollection implements IComponentCollection {
     private boolean isCreating(Class<?> implementation) {
         return creating.contains(implementation);
     }
+
+    @Override
+    public void removeComponent(Class<?> abstraction) {
+        implementations.remove(abstraction);
+    }
 }

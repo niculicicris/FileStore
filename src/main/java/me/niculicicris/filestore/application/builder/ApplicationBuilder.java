@@ -3,7 +3,6 @@ package me.niculicicris.filestore.application.builder;
 import me.niculicicris.filestore.application.Application;
 import me.niculicicris.filestore.application.abstraction.IApplication;
 import me.niculicicris.filestore.common.injection.abstraction.IComponentCollection;
-import me.niculicicris.filestore.common.injection.abstraction.IComponentInjector;
 import me.niculicicris.filestore.common.injection.abstraction.IMappingCollection;
 import me.niculicicris.filestore.common.injection.collection.ComponentCollection;
 import me.niculicicris.filestore.common.injection.collection.MappingCollection;
@@ -17,7 +16,7 @@ public class ApplicationBuilder {
         this.components = new ComponentCollection(mappings);
 
         this.mappings.addMapping(IApplication.class, applicationType);
-        this.components.addComponent(IComponentInjector.class, components);
+        this.components.addComponent(IComponentCollection.class, components);
     }
 
     public static ApplicationBuilder createApplication() {

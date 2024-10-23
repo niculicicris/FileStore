@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.layout.HBox?>
-<HBox alignment="CENTER"
-      xmlns:fx="http://javafx.com/fxml"
-      fx:controller="me.niculicicris.filestore.application.controller.ApplicationController"
-      fx:id="root">
-</HBox>
+<?import javafx.scene.layout.StackPane?>
+<StackPane xmlns:fx="http://javafx.com/fxml"
+           fx:controller="me.niculicicris.filestore.application.controller.ApplicationController"
+           fx:id="root">
+</StackPane>
+    
