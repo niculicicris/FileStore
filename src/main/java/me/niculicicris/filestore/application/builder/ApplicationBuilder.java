@@ -1,11 +1,12 @@
 package me.niculicicris.filestore.application.builder;
 
-import me.niculicicris.filestore.application.ConsoleApplication;
+import me.niculicicris.filestore.application.Application;
 import me.niculicicris.filestore.application.abstraction.IApplication;
-import me.niculicicris.filestore.injection.abstraction.IComponentCollection;
-import me.niculicicris.filestore.injection.abstraction.IMappingCollection;
-import me.niculicicris.filestore.injection.collection.ComponentCollection;
-import me.niculicicris.filestore.injection.collection.MappingCollection;
+import me.niculicicris.filestore.common.injection.abstraction.IComponentCollection;
+import me.niculicicris.filestore.common.injection.abstraction.IComponentInjector;
+import me.niculicicris.filestore.common.injection.abstraction.IMappingCollection;
+import me.niculicicris.filestore.common.injection.collection.ComponentCollection;
+import me.niculicicris.filestore.common.injection.collection.MappingCollection;
 
 public class ApplicationBuilder {
     private final IMappingCollection mappings;
@@ -16,10 +17,11 @@ public class ApplicationBuilder {
         this.components = new ComponentCollection(mappings);
 
         this.mappings.addMapping(IApplication.class, applicationType);
+        this.components.addComponent(IComponentInjector.class, components);
     }
 
-    public static ApplicationBuilder createConsoleApplication() {
-        return new ApplicationBuilder(ConsoleApplication.class);
+    public static ApplicationBuilder createApplication() {
+        return new ApplicationBuilder(Application.class);
     }
 
     public <A, I extends A> void addComponent(Class<A> abstraction, Class<I> implementation) {

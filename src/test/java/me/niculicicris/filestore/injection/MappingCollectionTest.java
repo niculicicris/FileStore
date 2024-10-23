@@ -2,8 +2,8 @@ package me.niculicicris.filestore.injection;
 
 import me.niculicicris.filestore.common.exception.NoDefaultMappingException;
 import me.niculicicris.filestore.common.exception.NoMappingException;
+import me.niculicicris.filestore.common.injection.collection.MappingCollection;
 import me.niculicicris.filestore.injection.abstraction.ITest;
-import me.niculicicris.filestore.injection.collection.MappingCollection;
 import me.niculicicris.filestore.injection.implementation.TestClass;
 import org.junit.jupiter.api.Test;
 
