@@ -53,7 +53,7 @@ public class AuthenticationServiceTest {
     }
 
     @Test
-    public void loginUser_invalidUser_shouldReturnNotFoundError() {
+    public void loginUser_invalidUser_shouldReturnAuthenticationError() {
         var username = "testUsername";
         var credentials = new UserCredentialsDto(username, "testPassword");
 
@@ -63,7 +63,7 @@ public class AuthenticationServiceTest {
         var result = authenticationService.loginUser(credentials);
 
         assertTrue(result.isFailure());
-        assertEquals(ErrorType.NOT_FOUND, result.getError().type());
+        assertEquals(ErrorType.AUTHENTICATION, result.getError().type());
         assertEquals(username, result.getError().target());
     }
 

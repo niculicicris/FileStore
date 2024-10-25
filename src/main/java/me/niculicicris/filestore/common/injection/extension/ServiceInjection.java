@@ -1,6 +1,6 @@
 package me.niculicicris.filestore.common.injection.extension;
 
-import me.niculicicris.filestore.application.builder.ApplicationBuilder;
+import me.niculicicris.filestore.application.infrastructure.builder.ApplicationBuilder;
 import me.niculicicris.filestore.service.authentication.AuthenticationService;
 import me.niculicicris.filestore.service.authentication.HashService;
 import me.niculicicris.filestore.service.authentication.UserService;

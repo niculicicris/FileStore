@@ -2,7 +2,7 @@ package me.niculicicris.filestore.application.navigation;
 
 import javafx.scene.Parent;
 import javafx.scene.layout.Pane;
-import me.niculicicris.filestore.application.loader.IViewLoader;
+import me.niculicicris.filestore.application.infrastructure.loader.IViewLoader;
 import me.niculicicris.filestore.application.navigation.abstraction.INavigator;
 import me.niculicicris.filestore.common.annotation.Inject;
 
@@ -36,7 +36,6 @@ public abstract class Navigator implements INavigator {
         root.getChildren().clear();
         root.getChildren().add(view);
     }
-
 
     private Parent getView(String route) {
         if (!routes.containsKey(route)) {

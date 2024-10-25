@@ -1,6 +1,6 @@
 package me.niculicicris.filestore.common.injection.extension;
 
-import me.niculicicris.filestore.application.builder.ApplicationBuilder;
+import me.niculicicris.filestore.application.infrastructure.builder.ApplicationBuilder;
 import me.niculicicris.filestore.validation.CredentialsValidator;
 import me.niculicicris.filestore.validation.FileNameValidator;
 import me.niculicicris.filestore.validation.abstraction.ICredentialsValidator;

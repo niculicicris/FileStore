@@ -1,0 +1,8 @@
+
+.navigation, .files {
+    -fx-background-color: -color-bg-subtle;
+}
+
+.files {
+    -fx-start-margin: 20px 20px 20px 20px;
+}

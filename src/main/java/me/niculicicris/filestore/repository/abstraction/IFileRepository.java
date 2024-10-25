@@ -1,5 +1,6 @@
 package me.niculicicris.filestore.repository.abstraction;
 
+import me.niculicicris.filestore.data.model.FileDescriptor;
 import me.niculicicris.filestore.data.model.StoredFile;
 
 import java.util.List;
@@ -10,7 +11,7 @@ public interface IFileRepository {
 
     boolean fileExists(String owner, String name);
 
-    List<StoredFile> getFiles(String owner);
+    List<FileDescriptor> getFileDescriptors(String owner);
 
     Optional<StoredFile> getFile(String owner, String name);
 

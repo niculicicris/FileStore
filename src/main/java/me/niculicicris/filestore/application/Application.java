@@ -5,7 +5,7 @@ import javafx.scene.Scene;
 import javafx.stage.Stage;
 import me.niculicicris.filestore.Main;
 import me.niculicicris.filestore.application.abstraction.IApplication;
-import me.niculicicris.filestore.application.loader.IViewLoader;
+import me.niculicicris.filestore.application.infrastructure.loader.IViewLoader;
 import me.niculicicris.filestore.common.annotation.Inject;
 
 public class Application implements IApplication {

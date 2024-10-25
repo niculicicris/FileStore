@@ -38,7 +38,7 @@ public class AuthenticationService implements IAuthenticationService {
 
         var optionalUser = userRepository.getUser(credentials.username());
         if (optionalUser.isEmpty()) {
-            var error = UserError.notFound(username);
+            var error = UserError.failedAuthentication(username);
             return EmptyResult.failure(error);
         }
 
@@ -50,6 +50,12 @@ public class AuthenticationService implements IAuthenticationService {
 
         authenticationRepository.saveAuthentication(username);
 
+        return EmptyResult.success();
+    }
+
+    @Override
+    public IEmptyResult logout() {
+        authenticationRepository.saveAuthentication("");
         return EmptyResult.success();
     }
 }

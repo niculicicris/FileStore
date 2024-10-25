@@ -7,8 +7,8 @@ import me.niculicicris.filestore.common.result.EmptyResult;
 import me.niculicicris.filestore.common.result.Result;
 import me.niculicicris.filestore.common.result.abstraction.IEmptyResult;
 import me.niculicicris.filestore.common.result.abstraction.IResult;
-import me.niculicicris.filestore.data.dto.FileDetailDto;
 import me.niculicicris.filestore.data.dto.FileDto;
+import me.niculicicris.filestore.data.model.FileDescriptor;
 import me.niculicicris.filestore.data.model.StoredFile;
 import me.niculicicris.filestore.repository.abstraction.IAuthenticationRepository;
 import me.niculicicris.filestore.repository.abstraction.IFileRepository;
@@ -54,25 +54,21 @@ public class FileService implements IFileService {
     }
 
     @Override
-    public IResult<List<FileDetailDto>> getFilesDetails() {
+    public IResult<List<FileDescriptor>> getFileDescriptors() {
         var user = authenticationRepository.getAuthentication();
 
         if (user.isEmpty()) {
             var error = UserError.failedAuthorization();
             return Result.failure(error);
         }
-
         var owner = user.get();
-        var files = fileRepository.getFiles(owner);
-        var details = files.stream()
-                .map(file -> new FileDetailDto(file.name(), file.content().length))
-                .toList();
+        var descriptors = fileRepository.getFileDescriptors(owner);
 
-        return Result.success(details);
+        return Result.success(descriptors);
     }
 
     @Override
-    public IResult<FileDto> retrieveFile(String name) {
+    public IResult<StoredFile> getFile(String name) {
         var validationResult = validator.validate(name);
 
         if (validationResult.isFailure()) {
@@ -90,9 +86,8 @@ public class FileService implements IFileService {
             var error = FileError.notFound(name);
             return Result.failure(error);
         }
-        var storedFile = optionalStoredFile.get();
 
-        return Result.success(new FileDto(storedFile.name(), storedFile.content()));
+        return Result.success(optionalStoredFile.get());
     }
 
     @Override

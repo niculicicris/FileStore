@@ -1,6 +1,6 @@
 package me.niculicicris.filestore.application.navigation;
 
-import me.niculicicris.filestore.application.loader.IViewLoader;
+import me.niculicicris.filestore.application.infrastructure.loader.IViewLoader;
 import me.niculicicris.filestore.common.annotation.Inject;
 
 public class MainNavigator extends Navigator {
@@ -11,5 +11,6 @@ public class MainNavigator extends Navigator {
 
         addRoute("login", "/application/authentication/login-view.fxml");
         addRoute("register", "/application/authentication/register-view.fxml");
+        addRoute("file", "/application/file/file-explorer-view.fxml");
     }
 }

@@ -2,7 +2,7 @@ package me.niculicicris.filestore;
 
 import javafx.application.Application;
 import javafx.stage.Stage;
-import me.niculicicris.filestore.application.builder.ApplicationBuilder;
+import me.niculicicris.filestore.application.infrastructure.builder.ApplicationBuilder;
 import me.niculicicris.filestore.common.injection.extension.ApplicationInjection;
 import me.niculicicris.filestore.common.injection.extension.RepositoryInjection;
 import me.niculicicris.filestore.common.injection.extension.ServiceInjection;
@@ -17,7 +17,7 @@ public class Main extends Application {
     @Override
     public void start(Stage stage) {
         var builder = ApplicationBuilder.createApplication();
-        
+
         ValidationInjection.addValidation(builder);
         RepositoryInjection.addRepositories(builder);
         ServiceInjection.addServices(builder);

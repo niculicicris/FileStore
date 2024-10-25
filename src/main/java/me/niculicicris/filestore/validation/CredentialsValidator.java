@@ -14,12 +14,12 @@ public class CredentialsValidator implements ICredentialsValidator {
         var password = credentials.password();
 
         if (!isUsernameValid(username)) {
-            var error = UserError.invalidUsername(username);
+            var error = UserError.invalidCredentials();
             return EmptyResult.failure(error);
         }
 
         if (!isPasswordValid(password)) {
-            var error = UserError.invalidPassword(password);
+            var error = UserError.invalidCredentials();
             return EmptyResult.failure(error);
         }
 

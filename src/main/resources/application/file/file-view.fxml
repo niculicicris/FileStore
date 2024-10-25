@@ -1,9 +1,38 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.layout.AnchorPane?>
-<AnchorPane xmlns="http://javafx.com/javafx"
-            xmlns:fx="http://javafx.com/fxml"
-            fx:controller="me.niculicicris.filestore.application.controller.file.FileController"
-            prefHeight="400.0" prefWidth="600.0">
-
-</AnchorPane>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.StackPane?>
+<?import javafx.scene.layout.VBox?>
+<VBox xmlns:fx="http://javafx.com/fxml"
+      fx:controller="me.niculicicris.filestore.application.controller.file.FileController"
+      style="-fx-cursor: hand">
+    <StackPane>
+        <ImageView>
+            <Image url="@image/folder.png" requestedHeight="80" preserveRatio="true"/>
+        </ImageView>
+        <Label text="${controller.fileSize}"
+               alignment="CENTER"
+               textAlignment="CENTER"
+               wrapText="true"
+               prefWidth="70"
+               styleClass="text-caption"/>
+        <Label minWidth="80" minHeight="80">
+            <contextMenu>
+                <ContextMenu>
+                    <items>
+                        <MenuItem onAction="#onRetrieveItemClick" text="Retrieve File"/>
+                        <MenuItem onAction="#onDeleteItemClick" text="Delete File"/>
+                    </items>
+                </ContextMenu>
+            </contextMenu>
+        </Label>
+    </StackPane>
+    <Label text="${controller.fileName}"
+           alignment="CENTER"
+           textAlignment="CENTER"
+           wrapText="true"
+           prefWidth="120"
+           styleClass="title-4"/>
+</VBox>

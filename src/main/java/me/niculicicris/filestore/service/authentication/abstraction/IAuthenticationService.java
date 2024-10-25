@@ -5,4 +5,6 @@ import me.niculicicris.filestore.data.dto.UserCredentialsDto;
 
 public interface IAuthenticationService {
     IEmptyResult loginUser(UserCredentialsDto credentials);
+
+    IEmptyResult logout();
 }

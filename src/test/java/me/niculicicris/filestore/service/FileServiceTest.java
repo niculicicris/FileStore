@@ -4,6 +4,7 @@ import me.niculicicris.filestore.common.error.Error;
 import me.niculicicris.filestore.common.error.ErrorType;
 import me.niculicicris.filestore.common.result.EmptyResult;
 import me.niculicicris.filestore.data.dto.FileDto;
+import me.niculicicris.filestore.data.model.FileDescriptor;
 import me.niculicicris.filestore.data.model.StoredFile;
 import me.niculicicris.filestore.repository.abstraction.IAuthenticationRepository;
 import me.niculicicris.filestore.repository.abstraction.IFileRepository;
@@ -74,62 +75,62 @@ public class FileServiceTest {
     }
 
     @Test
-    public void getFilesDetails_notAuthenticated_shouldReturnAuthorizationError() {
+    public void getFileDescriptors_notAuthenticated_shouldReturnAuthorizationError() {
         when(authenticationRepositoryMock.getAuthentication()).thenReturn(Optional.empty());
-        var result = fileService.getFilesDetails();
+        var result = fileService.getFileDescriptors();
 
         assertTrue(result.isFailure());
         assertEquals(ErrorType.AUTHORIZATION, result.getError().type());
     }
 
     @Test
-    public void getFilesDetails_shouldReturnFilesDetails() {
+    public void getFileDescriptors_shouldReturnFilesDetails() {
         var owner = "TestOwner";
-        var files = new ArrayList<StoredFile>();
+        var files = new ArrayList<FileDescriptor>();
 
-        files.add(new StoredFile(owner, "Test1.txt", new byte[0]));
-        files.add(new StoredFile(owner, "Test2.txt", new byte[0]));
+        files.add(new FileDescriptor("Test1.txt", 0));
+        files.add(new FileDescriptor("Test2.txt", 0));
 
         when(authenticationRepositoryMock.getAuthentication()).thenReturn(Optional.of(owner));
-        when(fileRepositoryMock.getFiles(owner)).thenReturn(files);
+        when(fileRepositoryMock.getFileDescriptors(owner)).thenReturn(files);
 
-        var result = fileService.getFilesDetails();
+        var result = fileService.getFileDescriptors();
         var value = result.getValue();
 
         assertTrue(result.isSuccess());
-        verify(fileRepositoryMock, times(1)).getFiles(owner);
+        verify(fileRepositoryMock, times(1)).getFileDescriptors(owner);
         for (int index = 0; index < value.size(); ++index) {
             assertEquals(files.get(index).name(), value.get(index).name());
         }
     }
 
     @Test
-    public void retrieveFile_invalidFileName_shouldReturnValidationError() {
+    public void getFile_invalidFileName_shouldReturnValidationError() {
         var validationError = new Error("Test", ErrorType.VALIDATION, "TestTarget");
         var name = "Test*";
 
         when(validatorMock.validate(name)).thenReturn(EmptyResult.failure(validationError));
-        var result = fileService.retrieveFile(name);
+        var result = fileService.getFile(name);
 
         assertTrue(result.isFailure());
         assertEquals(ErrorType.VALIDATION, result.getError().type());
     }
 
     @Test
-    public void retrieveFile_notAuthenticated_shouldReturnAuthorizationError() {
+    public void getFile_notAuthenticated_shouldReturnAuthorizationError() {
         var name = "Test.txt";
 
         when(validatorMock.validate(name)).thenReturn(EmptyResult.success());
         when(authenticationRepositoryMock.getAuthentication()).thenReturn(Optional.empty());
 
-        var result = fileService.retrieveFile(name);
+        var result = fileService.getFile(name);
 
         assertTrue(result.isFailure());
         assertEquals(ErrorType.AUTHORIZATION, result.getError().type());
     }
 
     @Test
-    public void retrieveFile_fileNotFound_shouldReturnNotFoundError() {
+    public void getFile_fileNotFound_shouldReturnNotFoundError() {
         var name = "Test.txt";
         var owner = "TestOwner";
 
@@ -137,7 +138,7 @@ public class FileServiceTest {
         when(authenticationRepositoryMock.getAuthentication()).thenReturn(Optional.of(owner));
         when(fileRepositoryMock.getFile(owner, name)).thenReturn(Optional.empty());
 
-        var result = fileService.retrieveFile(name);
+        var result = fileService.getFile(name);
 
         assertTrue(result.isFailure());
         assertEquals(ErrorType.NOT_FOUND, result.getError().type());
@@ -145,7 +146,7 @@ public class FileServiceTest {
     }
 
     @Test
-    public void retrieveFile_shouldReturnRetrievedFile() {
+    public void getFile_shouldReturnRetrievedFile() {
         var name = "Test.txt";
         var owner = "TestOwner";
         var file = new StoredFile(owner, name, new byte[0]);
@@ -154,7 +155,7 @@ public class FileServiceTest {
         when(authenticationRepositoryMock.getAuthentication()).thenReturn(Optional.of(owner));
         when(fileRepositoryMock.getFile(owner, name)).thenReturn(Optional.of(file));
 
-        var result = fileService.retrieveFile(name);
+        var result = fileService.getFile(name);
 
         assertTrue(result.isSuccess());
         assertEquals(name, result.getValue().name());
